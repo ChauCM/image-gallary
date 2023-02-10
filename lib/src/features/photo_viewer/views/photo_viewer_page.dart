@@ -49,7 +49,7 @@ class _PhotoViewerPageState extends State<PhotoViewerPage> {
                             .read<SavedPhotoCubit>()
                             .unSavePhoto(widget.photoId);
                       },
-                      icon: const Icon(Icons.favorite_border));
+                      icon: const Icon(Icons.favorite_rounded));
                 } else {
                   return IconButton(
                       onPressed: () {

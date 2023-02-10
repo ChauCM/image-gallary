@@ -44,7 +44,7 @@ class DashboardPage extends StatelessWidget {
                     BottomNavigationBarItem(
                         label: 'Gallery', icon: Icon(Icons.image)),
                     BottomNavigationBarItem(
-                      label: 'Posts',
+                      label: 'Saved',
                       icon: Icon(Icons.favorite),
                     ),
                   ],
