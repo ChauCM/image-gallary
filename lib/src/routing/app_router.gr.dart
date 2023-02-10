@@ -84,9 +84,16 @@ class _$AppRouter extends RootStackRouter {
           children: [
             RouteConfig(
               GalleryRouter.name,
-              path: '',
+              path: 'empty-router-page',
               parent: DashboardRoute.name,
               children: [
+                RouteConfig(
+                  '#redirect',
+                  path: '',
+                  parent: GalleryRouter.name,
+                  redirectTo: 'gallery',
+                  fullMatch: true,
+                ),
                 RouteConfig(
                   GalleryRoute.name,
                   path: 'gallery',
@@ -104,6 +111,13 @@ class _$AppRouter extends RootStackRouter {
               path: 'empty-router-page',
               parent: DashboardRoute.name,
               children: [
+                RouteConfig(
+                  '#redirect',
+                  path: '',
+                  parent: SavedRouter.name,
+                  redirectTo: 'saved',
+                  fullMatch: true,
+                ),
                 RouteConfig(
                   SavedRoute.name,
                   path: 'saved',
@@ -152,7 +166,7 @@ class GalleryRouter extends PageRouteInfo<void> {
   const GalleryRouter({List<PageRouteInfo>? children})
       : super(
           GalleryRouter.name,
-          path: '',
+          path: 'empty-router-page',
           initialChildren: children,
         );
 

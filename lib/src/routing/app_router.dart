@@ -16,18 +16,18 @@ part 'app_router.gr.dart';
     AutoRoute(path: 'login', page: LoginPage, initial: true),
     AutoRoute(path: '', page: DashboardPage, children: [
       AutoRoute(
-          name: 'GalleryRouter',
-          page: EmptyRouterPage,
-          initial: true,
-          children: [
-            AutoRoute(path: 'gallery', page: GalleryPage),
-            photoViewerRoute
-          ]),
+        name: 'GalleryRouter',
+        page: EmptyRouterPage,
+        children: [
+          AutoRoute(path: 'gallery', page: GalleryPage, initial: true),
+          photoViewerRoute
+        ],
+      ),
       AutoRoute(
         name: 'SavedRouter',
         page: EmptyRouterPage,
         children: [
-          AutoRoute(path: 'saved', page: SavedPage),
+          AutoRoute(path: 'saved', page: SavedPage, initial: true),
           photoViewerRoute,
         ],
       ),

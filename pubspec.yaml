@@ -50,6 +50,7 @@ dependencies:
   firebase_auth: ^4.2.6
   firebase_ui_auth: ^1.1.10
   firebase_ui_oauth_google: ^1.0.17
+  cloud_firestore: ^4.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
