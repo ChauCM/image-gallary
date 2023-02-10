@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_gallary/src/features/gallery/domain/repository/images_repository.dart';
@@ -33,35 +34,41 @@ class DashboardPage extends StatelessWidget {
           lazy: false,
           create: (context) =>
               SavedPhotoCubit(context.read<SavePhotoRepository>()),
-          child: AutoTabsRouter(
-            routes: const [
-              GalleryRouter(),
-              SavedRouter(),
-            ],
-            builder: (context, child, animation) {
-              final tabsRouter = AutoTabsRouter.of(context);
+          child: ScrollConfiguration(
+            behavior: ScrollConfiguration.of(context).copyWith(dragDevices: {
+              PointerDeviceKind.touch,
+              PointerDeviceKind.mouse,
+            }),
+            child: AutoTabsRouter(
+              routes: const [
+                GalleryRouter(),
+                SavedRouter(),
+              ],
+              builder: (context, child, animation) {
+                final tabsRouter = AutoTabsRouter.of(context);
 
-              return Scaffold(
-                  body: FadeTransition(
-                    opacity: animation,
-                    child: child,
-                  ),
-                  bottomNavigationBar: BottomNavigationBar(
-                    currentIndex: tabsRouter.activeIndex,
-                    onTap: (index) {
-                      // here we switch between tabs
-                      tabsRouter.setActiveIndex(index);
-                    },
-                    items: const [
-                      BottomNavigationBarItem(
-                          label: 'Gallery', icon: Icon(Icons.image)),
-                      BottomNavigationBarItem(
-                        label: 'Saved',
-                        icon: Icon(Icons.favorite),
-                      ),
-                    ],
-                  ));
-            },
+                return Scaffold(
+                    body: FadeTransition(
+                      opacity: animation,
+                      child: child,
+                    ),
+                    bottomNavigationBar: BottomNavigationBar(
+                      currentIndex: tabsRouter.activeIndex,
+                      onTap: (index) {
+                        // here we switch between tabs
+                        tabsRouter.setActiveIndex(index);
+                      },
+                      items: const [
+                        BottomNavigationBarItem(
+                            label: 'Gallery', icon: Icon(Icons.image)),
+                        BottomNavigationBarItem(
+                          label: 'Saved',
+                          icon: Icon(Icons.favorite),
+                        ),
+                      ],
+                    ));
+              },
+            ),
           ),
         ),
       ),
