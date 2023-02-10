@@ -1,9 +1,11 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:image_gallary/src/features/gallery/blocs/cubit/fetch_images_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_gallary/src/features/gallery/domain/repository/pexels_images_repository.dart';
+import 'package:image_gallary/src/features/user/blocs/user_cubit/user_cubit.dart';
 import 'package:image_gallary/src/routing/app_router.dart';
 import 'widgets/rounded_cache_network_image.dart';
 import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
@@ -36,7 +38,27 @@ class _GalleryPageState extends State<GalleryPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('counter'),
+        title: const Text('Gallery'),
+        actions: [
+          BlocBuilder<UserCubit, UserState>(
+            builder: (context, state) {
+              final photoUrl = state.whenOrNull(
+                authed: (user) => user.photoURL,
+              );
+
+              if (photoUrl != null) {
+                return IconButton(
+                  onPressed: () => context.read<UserCubit>().logOut(),
+                  icon: CircleAvatar(
+                    foregroundImage: CachedNetworkImageProvider(photoUrl),
+                  ),
+                );
+              } else {
+                return Container();
+              }
+            },
+          ),
+        ],
       ),
       body: BlocBuilder<FetchImagesCubit, FetchImagesState>(
         bloc: _cubit,

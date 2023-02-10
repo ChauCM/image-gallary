@@ -25,9 +25,8 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
-  // to trigger listener
-  void restate() {
-    emit(state);
+  Future<void> logOut() {
+    return FirebaseAuth.instance.signOut();
   }
 
   @override

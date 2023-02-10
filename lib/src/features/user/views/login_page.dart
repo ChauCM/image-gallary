@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 220, horizontal: 20),
             child: GoogleSignInButton(
-                loadingIndicator: const CircularProgressIndicator(),
+                loadingIndicator: CircularProgressIndicator(),
                 clientId:
                     '308573873242-1e5v45c1kd5oqbebpn3ife4qvk9fmqu8.apps.googleusercontent.com'),
           ),
