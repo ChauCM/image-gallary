@@ -6,7 +6,7 @@ part of 'photo_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_PhotoDto _$$_PhotoDtoFromJson(Map<String, dynamic> json) => _$_PhotoDto(
+_$_PhotoDto _$$_PhotoDtoFromJson(Map json) => _$_PhotoDto(
       id: json['id'] as int?,
       width: json['width'] as int?,
       height: json['height'] as int?,
@@ -17,7 +17,7 @@ _$_PhotoDto _$$_PhotoDtoFromJson(Map<String, dynamic> json) => _$_PhotoDto(
       avgColor: json['avg_color'] as String?,
       src: json['src'] == null
           ? null
-          : SrcDto.fromJson(json['src'] as Map<String, dynamic>),
+          : SrcDto.fromJson(Map<String, dynamic>.from(json['src'] as Map)),
       liked: json['liked'] as bool?,
       alt: json['alt'] as String?,
     );
@@ -32,7 +32,7 @@ Map<String, dynamic> _$$_PhotoDtoToJson(_$_PhotoDto instance) =>
       'photographer_url': instance.photographerUrl,
       'photographer_id': instance.photographerId,
       'avg_color': instance.avgColor,
-      'src': instance.src,
+      'src': instance.src?.toJson(),
       'liked': instance.liked,
       'alt': instance.alt,
     };

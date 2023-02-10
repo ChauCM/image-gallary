@@ -6,7 +6,7 @@ part of 'src_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_SrcDto _$$_SrcDtoFromJson(Map<String, dynamic> json) => _$_SrcDto(
+_$_SrcDto _$$_SrcDtoFromJson(Map json) => _$_SrcDto(
       original: json['original'] as String?,
       large2x: json['large2x'] as String?,
       large: json['large'] as String?,
