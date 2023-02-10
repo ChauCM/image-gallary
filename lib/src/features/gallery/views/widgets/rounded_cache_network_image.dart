@@ -9,9 +9,7 @@ class RoundedCacheNetworkImage extends StatelessWidget {
     Key? key,
     this.radius,
     this.fit,
-    this.placeHolder,
     this.errorWidget,
-    this.fadeIn = true,
   }) : super(key: key);
 
   final double? height;
@@ -19,26 +17,21 @@ class RoundedCacheNetworkImage extends StatelessWidget {
   final String url;
   final double? radius;
   final BoxFit? fit;
-  final Widget? placeHolder;
   final Widget? errorWidget;
-  final bool fadeIn;
 
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      key: Key(url),
       // memCache to make sure scrolling smoothly
       memCacheHeight: height != null ? (height! * 1.5).floor() : null,
       memCacheWidth: width != null ? (width! * 1.5).floor() : null,
       imageUrl: url,
       width: width,
       height: height,
-      fadeInDuration:
-          fadeIn ? const Duration(milliseconds: 1000) : Duration.zero,
-      fadeOutDuration:
-          fadeIn ? const Duration(milliseconds: 500) : Duration.zero,
-      placeholder: (context, url) =>
-          placeHolder != null ? placeHolder! : Container(),
+      useOldImageOnUrlChange: true,
+      placeholderFadeInDuration: Duration.zero,
+      fadeInDuration: Duration.zero,
+
       errorWidget: (context, url, error) => errorWidget != null
           ? errorWidget!
           : Container(

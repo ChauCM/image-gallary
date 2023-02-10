@@ -12,8 +12,8 @@ class DashboardPage extends StatelessWidget {
       // routes used here must be declaraed as children
       // routes of /dashboard
       routes: const [
-        GalleryRoute(),
-        SavedRoute(),
+        GalleryRouter(),
+        SavedRouter(),
       ],
       builder: (context, child, animation) {
         // obtain the scoped TabsRouter controller using context
