@@ -2,8 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_gallary/src/features/gallery/models/photo_dpo/photo_dpo.dart';
 import 'package:image_gallary/src/features/gallery/views/widgets/rounded_cache_network_image.dart';
+import 'package:image_gallary/src/features/saved/blocs/saved_photo_cubit/saved_photo_cubit.dart';
 
 class PhotoViewerPage extends StatefulWidget {
   const PhotoViewerPage({
@@ -38,8 +40,25 @@ class _PhotoViewerPageState extends State<PhotoViewerPage> {
         appBar: AppBar(
           title: Text('Image ${widget.photoId}'),
           actions: [
-            IconButton(
-                onPressed: () {}, icon: const Icon(Icons.favorite_border))
+            BlocBuilder<SavedPhotoCubit, List<PhotoDpo>>(
+              builder: (context, state) {
+                if (state.any((element) => element.id == widget.photo.id)) {
+                  return IconButton(
+                      onPressed: () {
+                        context
+                            .read<SavedPhotoCubit>()
+                            .unSavePhoto(widget.photoId);
+                      },
+                      icon: const Icon(Icons.favorite_border));
+                } else {
+                  return IconButton(
+                      onPressed: () {
+                        context.read<SavedPhotoCubit>().savePhoto(widget.photo);
+                      },
+                      icon: const Icon(Icons.favorite_border));
+                }
+              },
+            )
           ],
         ),
         body: ListView(

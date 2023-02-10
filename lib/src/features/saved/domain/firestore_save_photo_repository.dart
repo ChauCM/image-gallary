@@ -15,16 +15,17 @@ class FirestoreSavePhotoRepository extends SavePhotoRepository {
         .collection('users')
         .doc(user.uid)
         .collection('photos')
-        .add(photo.toJson());
+        .doc(photo.id.toString())
+        .set(photo.toJson());
   }
 
   @override
-  Future<void> unSavePhoto(String photoId) async {
+  Future<void> unSavePhoto(int photoId) async {
     await db
         .collection('users')
         .doc(user.uid)
         .collection('photos')
-        .doc(photoId)
+        .doc(photoId.toString())
         .delete();
   }
 

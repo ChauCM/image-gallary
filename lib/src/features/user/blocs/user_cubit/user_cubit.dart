@@ -29,6 +29,8 @@ class UserCubit extends Cubit<UserState> {
     return FirebaseAuth.instance.signOut();
   }
 
+  User? get user => state.whenOrNull(authed: (user) => user);
+
   @override
   Future<void> close() {
     _authStateChangesSubscription?.cancel();
