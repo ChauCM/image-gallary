@@ -30,6 +30,7 @@ mixin _$PhotoDpo {
   SrcDpo get src => throw _privateConstructorUsedError;
   bool? get liked => throw _privateConstructorUsedError;
   String? get alt => throw _privateConstructorUsedError;
+  PhotoDto? get dto => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PhotoDpoCopyWith<PhotoDpo> get copyWith =>
@@ -52,9 +53,11 @@ abstract class $PhotoDpoCopyWith<$Res> {
       @JsonKey(name: 'avg_color') String? avgColor,
       SrcDpo src,
       bool? liked,
-      String? alt});
+      String? alt,
+      PhotoDto? dto});
 
   $SrcDpoCopyWith<$Res> get src;
+  $PhotoDtoCopyWith<$Res>? get dto;
 }
 
 /// @nodoc
@@ -81,6 +84,7 @@ class _$PhotoDpoCopyWithImpl<$Res, $Val extends PhotoDpo>
     Object? src = null,
     Object? liked = freezed,
     Object? alt = freezed,
+    Object? dto = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -127,6 +131,10 @@ class _$PhotoDpoCopyWithImpl<$Res, $Val extends PhotoDpo>
           ? _value.alt
           : alt // ignore: cast_nullable_to_non_nullable
               as String?,
+      dto: freezed == dto
+          ? _value.dto
+          : dto // ignore: cast_nullable_to_non_nullable
+              as PhotoDto?,
     ) as $Val);
   }
 
@@ -135,6 +143,18 @@ class _$PhotoDpoCopyWithImpl<$Res, $Val extends PhotoDpo>
   $SrcDpoCopyWith<$Res> get src {
     return $SrcDpoCopyWith<$Res>(_value.src, (value) {
       return _then(_value.copyWith(src: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PhotoDtoCopyWith<$Res>? get dto {
+    if (_value.dto == null) {
+      return null;
+    }
+
+    return $PhotoDtoCopyWith<$Res>(_value.dto!, (value) {
+      return _then(_value.copyWith(dto: value) as $Val);
     });
   }
 }
@@ -157,10 +177,13 @@ abstract class _$$_PhotoDpoCopyWith<$Res> implements $PhotoDpoCopyWith<$Res> {
       @JsonKey(name: 'avg_color') String? avgColor,
       SrcDpo src,
       bool? liked,
-      String? alt});
+      String? alt,
+      PhotoDto? dto});
 
   @override
   $SrcDpoCopyWith<$Res> get src;
+  @override
+  $PhotoDtoCopyWith<$Res>? get dto;
 }
 
 /// @nodoc
@@ -185,6 +208,7 @@ class __$$_PhotoDpoCopyWithImpl<$Res>
     Object? src = null,
     Object? liked = freezed,
     Object? alt = freezed,
+    Object? dto = freezed,
   }) {
     return _then(_$_PhotoDpo(
       id: freezed == id
@@ -231,6 +255,10 @@ class __$$_PhotoDpoCopyWithImpl<$Res>
           ? _value.alt
           : alt // ignore: cast_nullable_to_non_nullable
               as String?,
+      dto: freezed == dto
+          ? _value.dto
+          : dto // ignore: cast_nullable_to_non_nullable
+              as PhotoDto?,
     ));
   }
 }
@@ -249,7 +277,8 @@ class _$_PhotoDpo implements _PhotoDpo {
       @JsonKey(name: 'avg_color') this.avgColor,
       required this.src,
       this.liked,
-      this.alt});
+      this.alt,
+      this.dto});
 
   @override
   final int? id;
@@ -276,10 +305,12 @@ class _$_PhotoDpo implements _PhotoDpo {
   final bool? liked;
   @override
   final String? alt;
+  @override
+  final PhotoDto? dto;
 
   @override
   String toString() {
-    return 'PhotoDpo(id: $id, width: $width, height: $height, url: $url, photographer: $photographer, photographerUrl: $photographerUrl, photographerId: $photographerId, avgColor: $avgColor, src: $src, liked: $liked, alt: $alt)';
+    return 'PhotoDpo(id: $id, width: $width, height: $height, url: $url, photographer: $photographer, photographerUrl: $photographerUrl, photographerId: $photographerId, avgColor: $avgColor, src: $src, liked: $liked, alt: $alt, dto: $dto)';
   }
 
   @override
@@ -301,12 +332,25 @@ class _$_PhotoDpo implements _PhotoDpo {
                 other.avgColor == avgColor) &&
             (identical(other.src, src) || other.src == src) &&
             (identical(other.liked, liked) || other.liked == liked) &&
-            (identical(other.alt, alt) || other.alt == alt));
+            (identical(other.alt, alt) || other.alt == alt) &&
+            (identical(other.dto, dto) || other.dto == dto));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, width, height, url,
-      photographer, photographerUrl, photographerId, avgColor, src, liked, alt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      width,
+      height,
+      url,
+      photographer,
+      photographerUrl,
+      photographerId,
+      avgColor,
+      src,
+      liked,
+      alt,
+      dto);
 
   @JsonKey(ignore: true)
   @override
@@ -327,7 +371,8 @@ abstract class _PhotoDpo implements PhotoDpo {
       @JsonKey(name: 'avg_color') final String? avgColor,
       required final SrcDpo src,
       final bool? liked,
-      final String? alt}) = _$_PhotoDpo;
+      final String? alt,
+      final PhotoDto? dto}) = _$_PhotoDpo;
 
   @override
   int? get id;
@@ -354,6 +399,8 @@ abstract class _PhotoDpo implements PhotoDpo {
   bool? get liked;
   @override
   String? get alt;
+  @override
+  PhotoDto? get dto;
   @override
   @JsonKey(ignore: true)
   _$$_PhotoDpoCopyWith<_$_PhotoDpo> get copyWith =>

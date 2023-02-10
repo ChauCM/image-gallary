@@ -14,6 +14,7 @@ class SrcDpo with _$SrcDpo {
     String? portrait,
     String? landscape,
     String? tiny,
+    SrcDto? dto,
   }) = _SrcDpo;
 
   factory SrcDpo.fromDto(SrcDto dto) => SrcDpo(
@@ -25,5 +26,6 @@ class SrcDpo with _$SrcDpo {
         portrait: dto.portrait,
         landscape: dto.landscape,
         tiny: dto.tiny,
+        dto: dto,
       );
 }

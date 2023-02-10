@@ -19,6 +19,7 @@ class PhotoDpo with _$PhotoDpo {
     required SrcDpo src,
     bool? liked,
     String? alt,
+    PhotoDto? dto,
   }) = _PhotoDpo;
 
   factory PhotoDpo.fromDto(PhotoDto dto) => PhotoDpo(
@@ -33,5 +34,6 @@ class PhotoDpo with _$PhotoDpo {
         src: SrcDpo.fromDto(dto.src!),
         liked: dto.liked,
         alt: dto.alt,
+        dto: dto,
       );
 }

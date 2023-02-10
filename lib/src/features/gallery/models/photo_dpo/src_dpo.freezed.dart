@@ -24,6 +24,7 @@ mixin _$SrcDpo {
   String? get portrait => throw _privateConstructorUsedError;
   String? get landscape => throw _privateConstructorUsedError;
   String? get tiny => throw _privateConstructorUsedError;
+  SrcDto? get dto => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SrcDpoCopyWith<SrcDpo> get copyWith => throw _privateConstructorUsedError;
@@ -42,7 +43,10 @@ abstract class $SrcDpoCopyWith<$Res> {
       String small,
       String? portrait,
       String? landscape,
-      String? tiny});
+      String? tiny,
+      SrcDto? dto});
+
+  $SrcDtoCopyWith<$Res>? get dto;
 }
 
 /// @nodoc
@@ -66,6 +70,7 @@ class _$SrcDpoCopyWithImpl<$Res, $Val extends SrcDpo>
     Object? portrait = freezed,
     Object? landscape = freezed,
     Object? tiny = freezed,
+    Object? dto = freezed,
   }) {
     return _then(_value.copyWith(
       original: null == original
@@ -100,7 +105,23 @@ class _$SrcDpoCopyWithImpl<$Res, $Val extends SrcDpo>
           ? _value.tiny
           : tiny // ignore: cast_nullable_to_non_nullable
               as String?,
+      dto: freezed == dto
+          ? _value.dto
+          : dto // ignore: cast_nullable_to_non_nullable
+              as SrcDto?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SrcDtoCopyWith<$Res>? get dto {
+    if (_value.dto == null) {
+      return null;
+    }
+
+    return $SrcDtoCopyWith<$Res>(_value.dto!, (value) {
+      return _then(_value.copyWith(dto: value) as $Val);
+    });
   }
 }
 
@@ -118,7 +139,11 @@ abstract class _$$_SrcDpoCopyWith<$Res> implements $SrcDpoCopyWith<$Res> {
       String small,
       String? portrait,
       String? landscape,
-      String? tiny});
+      String? tiny,
+      SrcDto? dto});
+
+  @override
+  $SrcDtoCopyWith<$Res>? get dto;
 }
 
 /// @nodoc
@@ -139,6 +164,7 @@ class __$$_SrcDpoCopyWithImpl<$Res>
     Object? portrait = freezed,
     Object? landscape = freezed,
     Object? tiny = freezed,
+    Object? dto = freezed,
   }) {
     return _then(_$_SrcDpo(
       original: null == original
@@ -173,6 +199,10 @@ class __$$_SrcDpoCopyWithImpl<$Res>
           ? _value.tiny
           : tiny // ignore: cast_nullable_to_non_nullable
               as String?,
+      dto: freezed == dto
+          ? _value.dto
+          : dto // ignore: cast_nullable_to_non_nullable
+              as SrcDto?,
     ));
   }
 }
@@ -188,7 +218,8 @@ class _$_SrcDpo implements _SrcDpo {
       required this.small,
       this.portrait,
       this.landscape,
-      this.tiny});
+      this.tiny,
+      this.dto});
 
   @override
   final String original;
@@ -206,10 +237,12 @@ class _$_SrcDpo implements _SrcDpo {
   final String? landscape;
   @override
   final String? tiny;
+  @override
+  final SrcDto? dto;
 
   @override
   String toString() {
-    return 'SrcDpo(original: $original, large2x: $large2x, large: $large, medium: $medium, small: $small, portrait: $portrait, landscape: $landscape, tiny: $tiny)';
+    return 'SrcDpo(original: $original, large2x: $large2x, large: $large, medium: $medium, small: $small, portrait: $portrait, landscape: $landscape, tiny: $tiny, dto: $dto)';
   }
 
   @override
@@ -227,12 +260,13 @@ class _$_SrcDpo implements _SrcDpo {
                 other.portrait == portrait) &&
             (identical(other.landscape, landscape) ||
                 other.landscape == landscape) &&
-            (identical(other.tiny, tiny) || other.tiny == tiny));
+            (identical(other.tiny, tiny) || other.tiny == tiny) &&
+            (identical(other.dto, dto) || other.dto == dto));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, original, large2x, large, medium,
-      small, portrait, landscape, tiny);
+      small, portrait, landscape, tiny, dto);
 
   @JsonKey(ignore: true)
   @override
@@ -250,7 +284,8 @@ abstract class _SrcDpo implements SrcDpo {
       required final String small,
       final String? portrait,
       final String? landscape,
-      final String? tiny}) = _$_SrcDpo;
+      final String? tiny,
+      final SrcDto? dto}) = _$_SrcDpo;
 
   @override
   String get original;
@@ -268,6 +303,8 @@ abstract class _SrcDpo implements SrcDpo {
   String? get landscape;
   @override
   String? get tiny;
+  @override
+  SrcDto? get dto;
   @override
   @JsonKey(ignore: true)
   _$$_SrcDpoCopyWith<_$_SrcDpo> get copyWith =>
