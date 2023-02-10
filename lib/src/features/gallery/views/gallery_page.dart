@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:image_gallary/src/features/gallery/blocs/cubit/fetch_images_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_gallary/src/features/gallery/domain/repository/images_repository.dart';
 import 'package:image_gallary/src/features/gallery/domain/repository/pexels_images_repository.dart';
 import 'package:image_gallary/src/features/photo_viewer/views/widgets/thumb_widget.dart';
 import 'package:image_gallary/src/features/user/blocs/user_cubit/user_cubit.dart';
@@ -24,7 +25,7 @@ class _GalleryPageState extends State<GalleryPage> {
   void initState() {
     _scrollController = ScrollController();
     _refreshController = RefreshController();
-    _cubit = FetchImagesCubit(PicsumImagesRepository())..refresh();
+    _cubit = FetchImagesCubit(context.read<ImagesRepository>())..refresh();
     super.initState();
   }
 

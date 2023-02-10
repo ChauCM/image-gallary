@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:image_gallary/src/features/gallery/domain/dto/photo_dto/photos_dto.dart';
 import 'package:image_gallary/src/features/gallery/domain/repository/images_repository.dart';
 
-class PicsumImagesRepository extends ImagesRepository {
+class PexelsImagesRepository extends ImagesRepository {
   final _dio = Dio();
 
   @override

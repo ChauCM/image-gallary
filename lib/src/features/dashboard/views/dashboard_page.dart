@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_gallary/src/features/gallery/domain/repository/images_repository.dart';
+import 'package:image_gallary/src/features/gallery/domain/repository/pexels_images_repository.dart';
 import 'package:image_gallary/src/features/saved/blocs/saved_photo_cubit/saved_photo_cubit.dart';
 import 'package:image_gallary/src/features/saved/domain/firestore_save_photo_repository.dart';
 import 'package:image_gallary/src/features/saved/domain/save_photo_repository.dart';
@@ -17,39 +19,50 @@ class DashboardPage extends StatelessWidget {
         state.whenOrNull(
             unAuth: () => context.router.replaceAll([const LoginRoute()]));
       },
-      child: BlocProvider(
-        lazy: false,
-        create: (context) => SavedPhotoCubit(
-            FirestoreSavePhotoRepository(context.read<UserCubit>().user!)),
-        child: AutoTabsRouter(
-          routes: const [
-            GalleryRouter(),
-            SavedRouter(),
-          ],
-          builder: (context, child, animation) {
-            final tabsRouter = AutoTabsRouter.of(context);
+      child: MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider<SavePhotoRepository>(
+            create: (context) =>
+                FirestoreSavePhotoRepository(context.read<UserCubit>().user!),
+          ),
+          RepositoryProvider<ImagesRepository>(
+            create: (context) => PexelsImagesRepository(),
+          )
+        ],
+        child: BlocProvider(
+          lazy: false,
+          create: (context) =>
+              SavedPhotoCubit(context.read<SavePhotoRepository>()),
+          child: AutoTabsRouter(
+            routes: const [
+              GalleryRouter(),
+              SavedRouter(),
+            ],
+            builder: (context, child, animation) {
+              final tabsRouter = AutoTabsRouter.of(context);
 
-            return Scaffold(
-                body: FadeTransition(
-                  opacity: animation,
-                  child: child,
-                ),
-                bottomNavigationBar: BottomNavigationBar(
-                  currentIndex: tabsRouter.activeIndex,
-                  onTap: (index) {
-                    // here we switch between tabs
-                    tabsRouter.setActiveIndex(index);
-                  },
-                  items: const [
-                    BottomNavigationBarItem(
-                        label: 'Gallery', icon: Icon(Icons.image)),
-                    BottomNavigationBarItem(
-                      label: 'Saved',
-                      icon: Icon(Icons.favorite),
-                    ),
-                  ],
-                ));
-          },
+              return Scaffold(
+                  body: FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  ),
+                  bottomNavigationBar: BottomNavigationBar(
+                    currentIndex: tabsRouter.activeIndex,
+                    onTap: (index) {
+                      // here we switch between tabs
+                      tabsRouter.setActiveIndex(index);
+                    },
+                    items: const [
+                      BottomNavigationBarItem(
+                          label: 'Gallery', icon: Icon(Icons.image)),
+                      BottomNavigationBarItem(
+                        label: 'Saved',
+                        icon: Icon(Icons.favorite),
+                      ),
+                    ],
+                  ));
+            },
+          ),
         ),
       ),
     );
