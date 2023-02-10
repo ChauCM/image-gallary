@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+
+import 'widgets/rounded_cache_network_image.dart';
 
 class GalleryPage extends StatefulWidget {
   const GalleryPage({super.key});
@@ -8,12 +11,14 @@ class GalleryPage extends StatefulWidget {
 }
 
 class _GalleryPageState extends State<GalleryPage> {
-  int _counter = 0;
+  late final List<String> images;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    images = [
+      for (var i = 0; i < 30; i++) 'https://picsum.photos/200/300?random=$i',
+    ];
+    super.initState();
   }
 
   @override
@@ -22,24 +27,29 @@ class _GalleryPageState extends State<GalleryPage> {
       appBar: AppBar(
         title: const Text('counter'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: CustomScrollView(
+        slivers: [
+          SliverPadding(
+            padding: const EdgeInsets.all(8.0),
+            sliver: SliverMasonryGrid(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return RoundedCacheNetworkImage(
+                    height: 200,
+                    url: images[index],
+                  );
+                },
+                childCount: images.length,
+              ),
+              gridDelegate:
+                  const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+              ),
+              crossAxisSpacing: 6,
+              mainAxisSpacing: 8,
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
