@@ -11,7 +11,7 @@ part 'app_router.gr.dart';
   routes: <AutoRoute>[
     AutoRoute(path: '', page: DashboardPage, children: [
       AutoRoute(path: 'gallery', page: GalleryPage, initial: true),
-      AutoRoute(path: 'gallery', page: SavedPage),
+      AutoRoute(path: 'saved', page: SavedPage),
     ]),
   ],
 )

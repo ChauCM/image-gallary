@@ -57,7 +57,7 @@ class _$AppRouter extends RootStackRouter {
             ),
             RouteConfig(
               SavedRoute.name,
-              path: 'gallery',
+              path: 'saved',
               parent: DashboardRoute.name,
             ),
           ],
@@ -96,7 +96,7 @@ class SavedRoute extends PageRouteInfo<void> {
   const SavedRoute()
       : super(
           SavedRoute.name,
-          path: 'gallery',
+          path: 'saved',
         );
 
   static const String name = 'SavedRoute';
