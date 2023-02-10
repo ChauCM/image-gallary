@@ -35,11 +35,12 @@ class _LoginPageState extends State<LoginPage> {
       },
       child: Scaffold(
           body: Column(
-        children: const [
+        children: [
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 220, horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 220, horizontal: 20),
             child: GoogleSignInButton(
-                loadingIndicator: CircularProgressIndicator(),
+                loadingIndicator: const CircularProgressIndicator(),
+                onError: (exception) => print(exception),
                 clientId:
                     '308573873242-1e5v45c1kd5oqbebpn3ife4qvk9fmqu8.apps.googleusercontent.com'),
           ),

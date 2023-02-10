@@ -13,6 +13,7 @@ class UserCubit extends Cubit<UserState> {
   UserCubit() : super(const UserState.unAuth()) {
     _authStateChangesSubscription =
         FirebaseAuth.instance.authStateChanges().listen((User? user) {
+      print(user);
       _changeState(user);
     });
   }
