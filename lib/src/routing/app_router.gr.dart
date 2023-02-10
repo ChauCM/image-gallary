@@ -17,6 +17,12 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    LoginRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const LoginPage(),
+      );
+    },
     DashboardRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -65,8 +71,12 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           '/#redirect',
           path: '/',
-          redirectTo: '',
+          redirectTo: 'login',
           fullMatch: true,
+        ),
+        RouteConfig(
+          LoginRoute.name,
+          path: 'login',
         ),
         RouteConfig(
           DashboardRoute.name,
@@ -77,13 +87,6 @@ class _$AppRouter extends RootStackRouter {
               path: '',
               parent: DashboardRoute.name,
               children: [
-                RouteConfig(
-                  '#redirect',
-                  path: '',
-                  parent: GalleryRouter.name,
-                  redirectTo: 'gallery',
-                  fullMatch: true,
-                ),
                 RouteConfig(
                   GalleryRoute.name,
                   path: 'gallery',
@@ -116,6 +119,18 @@ class _$AppRouter extends RootStackRouter {
           ],
         ),
       ];
+}
+
+/// generated route for
+/// [LoginPage]
+class LoginRoute extends PageRouteInfo<void> {
+  const LoginRoute()
+      : super(
+          LoginRoute.name,
+          path: 'login',
+        );
+
+  static const String name = 'LoginRoute';
 }
 
 /// generated route for

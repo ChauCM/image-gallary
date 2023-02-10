@@ -6,19 +6,21 @@ import 'package:image_gallary/src/features/gallery/views/gallery_page.dart';
 import 'package:image_gallary/src/features/photo_viewer/views/photo_viewer_page.dart';
 import 'package:image_gallary/src/features/saved/views/saved_page.dart';
 import 'package:auto_route/empty_router_widgets.dart';
+import 'package:image_gallary/src/features/user/views/login_page.dart';
 
 part 'app_router.gr.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
-    AutoRoute(path: '', page: DashboardPage, initial: true, children: [
+    AutoRoute(path: 'login', page: LoginPage, initial: true),
+    AutoRoute(path: '', page: DashboardPage, children: [
       AutoRoute(
           name: 'GalleryRouter',
           page: EmptyRouterPage,
           initial: true,
           children: [
-            AutoRoute(path: 'gallery', page: GalleryPage, initial: true),
+            AutoRoute(path: 'gallery', page: GalleryPage),
             photoViewerRoute
           ]),
       AutoRoute(

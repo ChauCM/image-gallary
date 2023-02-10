@@ -8,16 +8,16 @@ part 'user_state.dart';
 part 'user_cubit.freezed.dart';
 
 class UserCubit extends Cubit<UserState> {
-  late StreamSubscription _authStateChangesSubscription;
+  StreamSubscription? _authStateChangesSubscription;
 
   UserCubit() : super(const UserState.unAuth()) {
     _authStateChangesSubscription =
         FirebaseAuth.instance.authStateChanges().listen((User? user) {
-      changeState(user);
+      _changeState(user);
     });
   }
 
-  void changeState(User? user) {
+  void _changeState(User? user) {
     if (user != null) {
       emit(UserState.authed(user));
     } else {
@@ -25,9 +25,14 @@ class UserCubit extends Cubit<UserState> {
     }
   }
 
+  // to trigger listener
+  void restate() {
+    emit(state);
+  }
+
   @override
   Future<void> close() {
-    _authStateChangesSubscription.cancel();
+    _authStateChangesSubscription?.cancel();
     return super.close();
   }
 }
