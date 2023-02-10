@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FetchImagesState {
-  List<NetworkImageDpo> get images => throw _privateConstructorUsedError;
+  List<PhotoDpo> get images => throw _privateConstructorUsedError;
   int get page => throw _privateConstructorUsedError;
   FetchImagesStateStatus get status => throw _privateConstructorUsedError;
   String? get error => throw _privateConstructorUsedError;
@@ -33,7 +33,7 @@ abstract class $FetchImagesStateCopyWith<$Res> {
       _$FetchImagesStateCopyWithImpl<$Res, FetchImagesState>;
   @useResult
   $Res call(
-      {List<NetworkImageDpo> images,
+      {List<PhotoDpo> images,
       int page,
       FetchImagesStateStatus status,
       String? error});
@@ -61,7 +61,7 @@ class _$FetchImagesStateCopyWithImpl<$Res, $Val extends FetchImagesState>
       images: null == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<NetworkImageDpo>,
+              as List<PhotoDpo>,
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$_FetchImagesStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<NetworkImageDpo> images,
+      {List<PhotoDpo> images,
       int page,
       FetchImagesStateStatus status,
       String? error});
@@ -113,7 +113,7 @@ class __$$_FetchImagesStateCopyWithImpl<$Res>
       images: null == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<NetworkImageDpo>,
+              as List<PhotoDpo>,
       page: null == page
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -134,16 +134,16 @@ class __$$_FetchImagesStateCopyWithImpl<$Res>
 
 class _$_FetchImagesState implements _FetchImagesState {
   const _$_FetchImagesState(
-      {final List<NetworkImageDpo> images = const [],
+      {final List<PhotoDpo> images = const [],
       this.page = 1,
       required this.status,
       this.error})
       : _images = images;
 
-  final List<NetworkImageDpo> _images;
+  final List<PhotoDpo> _images;
   @override
   @JsonKey()
-  List<NetworkImageDpo> get images {
+  List<PhotoDpo> get images {
     if (_images is EqualUnmodifiableListView) return _images;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_images);
@@ -186,13 +186,13 @@ class _$_FetchImagesState implements _FetchImagesState {
 
 abstract class _FetchImagesState implements FetchImagesState {
   const factory _FetchImagesState(
-      {final List<NetworkImageDpo> images,
+      {final List<PhotoDpo> images,
       final int page,
       required final FetchImagesStateStatus status,
       final String? error}) = _$_FetchImagesState;
 
   @override
-  List<NetworkImageDpo> get images;
+  List<PhotoDpo> get images;
   @override
   int get page;
   @override

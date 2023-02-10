@@ -1,5 +1,5 @@
-import 'package:image_gallary/src/features/gallery/domain/dto/network_image_dto/network_image_dto.dart';
+import 'package:image_gallary/src/features/gallery/domain/dto/photo_dto/photos_dto.dart';
 
 abstract class ImagesRepository {
-  Future<List<NetworkImageDto>> getImages({int page, int limit});
+  Future<PhotosDto> getImages({int page, int limit});
 }
