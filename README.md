@@ -13,7 +13,15 @@ Main features:
 Room to improve:
 - Add testing
 - Implement Hydrate User Cubit to save user session
+- Better web view
 
+
+Firebase Firestore:
+<img width="845" alt="image" src="https://user-images.githubusercontent.com/86839861/218136071-ec51df33-94f7-48aa-b9a0-968937377cb7.png">
+
+
+Project:
+<img width="761" alt="image" src="https://user-images.githubusercontent.com/86839861/218133770-8ecbc59a-237e-450f-a351-46b1976d88ab.png">
 
 FolderStructure simmilar to https://codewithandrea.com/articles/flutter-project-structure/ with modification
 
